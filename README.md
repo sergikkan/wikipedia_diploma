@@ -121,7 +121,7 @@ ${TYPE}Tests
   <img src="images/testOps2.png" alt="testOps2" width="900">
 </p>
 
-## <img width="4%" title="BROWSERSTACK" src="images/logo/browserStack.svg">[BROWSERSTACK](https://app-automate.browserstack.com/dashboard/v2/builds/2981d0ebfffee19fd6ef9896705e8277f4ae13f8/sessions/105dfdc7fd19eb2cede43893836364ca9bba6009)
+## <img width="4%" title="browserStack" src="images/logo/browserStack.svg">[BROWSERSTACK](https://app-automate.browserstack.com/dashboard/v2/builds/2981d0ebfffee19fd6ef9896705e8277f4ae13f8/sessions/105dfdc7fd19eb2cede43893836364ca9bba6009)
 
 <p align="center">
   <img src="images/browserStack.png" alt="browserStack" width="900">

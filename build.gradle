@@ -51,7 +51,6 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "io.appium:java-client:$appiumVersion",
             "commons-io:commons-io:$commonsIoVersion",
-            "com.github.javafaker:javafaker:1.0.2",
             "org.assertj:assertj-core:$assertJVersion",
             "org.aeonbits.owner:owner:$ownerVersion",
             "org.junit.jupiter:junit-jupiter:5.9.0",
