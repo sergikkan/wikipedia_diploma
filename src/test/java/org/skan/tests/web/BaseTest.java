@@ -1,6 +1,5 @@
 package org.skan.tests.web;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -15,7 +14,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTest {
 
-    static String useRemote = System.getProperty("webPlatform", "remote");
+    static String useRemote = System.getProperty("web", "remote");
     public MainpagePage mainPage = new MainpagePage();
     public LoginPage logIn = new LoginPage();
 
