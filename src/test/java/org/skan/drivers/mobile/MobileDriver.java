@@ -3,9 +3,11 @@ package org.skan.drivers.mobile;
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import lombok.SneakyThrows;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.skan.config.mobile.EmulatorConfig;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +19,8 @@ import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class MobileDriver implements WebDriverProvider {
+
+    EmulatorConfig config = ConfigFactory.create(EmulatorConfig.class);
 
     public static URL getAppiumServerUrl(){
         try {
@@ -33,12 +37,12 @@ public class MobileDriver implements WebDriverProvider {
         options.merge(capabilities);
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
-                .setPlatformName("android")
-                .setDeviceName("Pixel 4 API 30")
-                .setPlatformVersion("11.0")
+                .setPlatformName(config.platformName())
+                .setDeviceName(config.deviceName())
+                .setPlatformVersion(config.platformVersion())
                 .setApp(getAppPath())
-                .setAppPackage("org.wikipedia.alpha")
-                .setAppActivity("org.wikipedia.main.MainActivity");
+                .setAppPackage(config.appPackage())
+                .setAppActivity(config.appActivity());
 
         return new RemoteWebDriver(getAppiumServerUrl(), options);
     }
@@ -46,7 +50,7 @@ public class MobileDriver implements WebDriverProvider {
     private String getAppPath(){
         String appUrl ="https://github.com/wikimedia/apps-android-wikipedia/" +
                 "releases/download/latest/app-alpha-universal-release.apk";
-        String appPath = "src/test/resources/apk/app-alpha-universal-release.apk";
+        String appPath = config.appPath();
 
         File app = new File(appPath);
         if(!app.exists()){

@@ -52,49 +52,38 @@
 - Открытие страницы Настройки
 - Открытие страницы домашняя страница пользователя
 
+### Тест кейсы для Mobie тестирования
+
+- Поиск статьи
+- Открытие статьи
+- Добавление языка в настройках
+
 ## :computer: Запуск тестов из терминала
+
+Файлы с параметрами конфигурации для запуска тестов находятся в папках resources/web и resources/mobile
 
 ### Локальный запуск тестов
 
 ```bash
-gradle clean test
-или запуск из файла с параметрами gradle clean test -Denv=local
+gradle clean web
+gradle clean mobile -DmobileDeviceHost=emulation
 ```
 
 ### Удаленный запуск тестов
 
 ```bash
 gradle clean test
--Dbrowser=${BROWSER}
--Dbrowser_version=${BROWSER_VERSION}
--Dbrowser_size=${BROWSER_SIZE}
--Dremote=https://user1:1234@${URL}/wd/hub
--Dusername=Skan2023
--Dpassword=Inspiration2022!
-
-или запуск из файла с параметрами gradle clean test -Denv=remote
+clean 
+${TYPE}Tests
 ```
 
 ## Параметры сборки
 
-
-<code>testType</code> – имя ресурса\девайса (возможен запуск  **UI тестов** - в **selenoid**,
-**mobile тестов** - в **Browserstack**, на эмуляторе в **Android Studi**o c
-помощью сервера **Appium**).
- 
-<code>tag</code> – разновидность тестов (**UI**, **mobile**).
-
-<code>BROWSER</code> – браузер, в котором будут выполняться тесты (_по умолчанию - <code>chrome</code>_).
-
- <code>BROWSER_VERSION</code> – версия браузера (_по умолчанию - <code>100</code>_).
-
- <code>BROWSER_SIZE</code> – размер окна браузера, в котором будут выполняться тесты.
-
- <code>URL</code> – адрес удаленного сервера Selenoid.
+<code>TYPE</code> – разновидность тестов (**web**, **mobile**, **all**).
 
 ## <img width="4%" title="Jenkins" src="images/logo/Jenkins_logo.svg"> Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/wipedia_diploma/)
 
-Для запуска сборки необходимо указать значения параметров и нажать кнопку <code><strong>*Собрать*</strong></code>.
+Для запуска сборки необходимо указать значениe параметрa TYPE (all, web, mobile) и нажать на кнопку <code><strong>*Собрать*</strong></code>.
 
 <p align="center">
   <img src="images/jenkins.png" alt="Jenkins" width="800">
@@ -104,38 +93,50 @@ gradle clean test
 значок *Allure Report*, кликнув по которому, откроется страница с сформированным html-отчетом.
 
 <p align="center">
-  <img src="images/allure-report.png" alt="allure-report" width="800">
+  <img src="images/Allure.png" alt="Allure" width="800">
 </p>
 
 
-## <img width="4%" title="Allure Report" src="images/logo/Allure.svg"> Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/wipedia_diploma/2/allure/)
+## <img width="4%" title="Allure Report" src="images/logo/Allure.svg"> Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/wipedia_diploma/8/allure)
 
 <p align="center">
-  <img src="images/allure-report1.png" alt="allure-report1" width="900">
+  <img src="images/allure2.png" alt="allure2" width="900">
 </p>
 <p align="center">
-  <img src="images/allure-report2.png" alt="allure-report2" width="900">
+  <img src="images/allure3.png" alt="allure-report3" width="900">
 </p>
 
 
-## <img width="4%" title="Allure TestOPS" src="images/logo/Allure_TO.svg"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/jobrun/17629)
+## <img width="4%" title="Allure TestOPS" src="images/logo/Allure_TO.svg"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/jobrun/17723)
 
 ## Основной дашборд
 
 <p align="center">
-  <img src="images/dashboard.png" alt="dashboard" width="900">
+  <img src="images/testOps1.png" alt="testOps1" width="900">
 </p>
  
 ## Тест-кейсы 
 
 <p align="center">
-  <img src="images/testcase.png" alt="testcase" width="900">
+  <img src="images/testOps2.png" alt="testOps2" width="900">
+</p>
+
+## <img width="4%" title="BROWSERSTACK" src="images/logo/browserStack.svg">[BROWSERSTACK](https://app-automate.browserstack.com/dashboard/v2/builds/2981d0ebfffee19fd6ef9896705e8277f4ae13f8/sessions/105dfdc7fd19eb2cede43893836364ca9bba6009)
+
+<p align="center">
+  <img src="images/browserStack.png" alt="browserStack" width="900">
 </p>
 
 ## <img width="4%" title="Telegram" src="images/logo/Telegram.svg"> Уведомления в Telegram с использованием бота
 После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне тестов.
 
 <p align="center">
-<img title="Telegram Notifications" src="images/telegram.png">
+<img title="Telegram Notifications" src="images/telegram.png"width="800">
+</p>
+
+## <a name="Video"></a> :tv: Пример видео тестов в Browserstack
+
+<p align="center">
+<img src="images/video/browserstack.gif" alt="video" width="600">
 </p>
 

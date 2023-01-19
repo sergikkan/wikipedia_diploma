@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.skan.drivers.mobile.BrowserstackMobileDriver;
 import org.skan.drivers.mobile.MobileDriver;
 import org.skan.helpers.Attach;
+import org.skan.tests.mobile.pages.WikipediaPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -18,10 +19,18 @@ import static org.skan.helpers.Attach.*;
 
 public class BaseTest {
 
+    static String driver = System.getProperty("mobileDeviceHost", "browserstack");
 
+    public WikipediaPage wiki = new WikipediaPage();
     @BeforeAll
     static void setUp() {
-        Configuration.browser = BrowserstackMobileDriver.class.getName();
+        if (driver.equals("browserstack")) {
+            Configuration.browser = BrowserstackMobileDriver.class.getName();
+        } else if (driver.equals("emulation")) {
+            Configuration.browser = MobileDriver.class.getName();
+        } else {
+            throw new RuntimeException("Incorrect stand name");
+        }
         Configuration.browserSize = null;
     }
 
@@ -37,6 +46,8 @@ public class BaseTest {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         closeWebDriver();
-        Attach.video(sessionId);
+        if (driver.equals("browserstack")) {
+            Attach.video(sessionId);
+        }
     }
 }
