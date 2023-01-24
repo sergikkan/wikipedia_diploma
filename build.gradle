@@ -34,8 +34,6 @@ allure {
 group 'org.skan'
 version '1.0-SNAPSHOT'
 
-
-
 compileJava{
     options.encoding="UTF-8"
 }
@@ -57,7 +55,6 @@ dependencies {
             "org.slf4j:slf4j-simple:$slf4jVersion",
             'io.github.bonigarcia:webdrivermanager:5.3.1'
     )
-
 }
 
 tasks.withType(Test) {
@@ -71,7 +68,6 @@ tasks.withType(Test) {
         }
     }
 }
-
 
 task webTests(type: Test) {
     systemProperties(System.getProperties())
