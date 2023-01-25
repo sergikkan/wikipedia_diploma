@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 @Tag("WEB")
 @Tag("ALL")
 public class LoginTests extends BaseTest {
-
-
     @Test
     void loginTest(){
         mainPage.openMainPage();
@@ -19,15 +17,23 @@ public class LoginTests extends BaseTest {
 
     @Test
     void openUserHomepageTest(){
-        loginTest();
-        logIn.openUserPage()
+        mainPage.openMainPage();
+        logIn.openLoginPage()
+                .setLogin(userName)
+                .setPassword(password)
+                .checkThatLoginSuccess(userName)
+                .openUserPage()
                 .checkThatUserPageOpened(userName);
     }
 
     @Test
     void openUserSettingsTest(){
-        loginTest();
-        logIn.openSettings().checkThatSettingsOpened();
-
+        mainPage.openMainPage();
+        logIn.openLoginPage()
+                .setLogin(userName)
+                .setPassword(password)
+                .checkThatLoginSuccess(userName)
+                .openSettings()
+                .checkThatSettingsOpened();
     }
 }

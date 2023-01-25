@@ -16,28 +16,35 @@ public class MainPageTests extends BaseTest {
 
     @Test
     void searchTest(){
-        openMainPageTest();
-        mainPage.setSearchedText(searchQuery)
+        mainPage.openMainPage()
+                .checkThatMainpageOpened()
+                .setSearchedText(searchQuery)
                 .checkSearchResult(searchQuery);
     }
 
     @Test
     void openSearchArticleTest(){
-        searchTest();
-        mainPage.openSearchResult()
+        mainPage.openMainPage()
+                .checkThatMainpageOpened()
+                .setSearchedText(searchQuery)
+                .checkSearchResult(searchQuery)
+                .openSearchResult()
                 .checkOpenedResult(searchQuery);
     }
 
     @Test
     void openForumTest(){
-        openMainPageTest();
-        mainPage.openForum().checkThatForumOpened();
+        mainPage.openMainPage()
+                .checkThatMainpageOpened()
+                .openForum()
+                .checkThatForumOpened();
     }
 
     @Test
     void openDonationTest(){
-        openMainPageTest();
-        mainPage.openDonationPage().checkThatDonationOpened();
-
+        mainPage.openMainPage()
+                .checkThatMainpageOpened()
+                .openDonationPage()
+                .checkThatDonationOpened();
     }
 }
